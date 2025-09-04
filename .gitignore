@@ -1,0 +1,35 @@
+# --- Python ---
+.venv/
+env/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+pip-wheel-metadata/
+
+# --- Env & secrets ---
+.env
+.env.*
+*.key
+*.pem
+
+# --- Dagster local state ---
+.dagster_home/
+.tmp_dagster_home_*/
+
+# --- dbt generated artifacts ---
+src/dagster_and_dbt/analytics/target/
+src/dagster_and_dbt/analytics/logs/
+src/dagster_and_dbt/analytics/dbt_packages/
+
+# --- DuckDB & outputs nặng ---
+src/dagster_and_dbt/analytics/duckdb/*.duckdb
+*.duckdb
+data/outputs/
+
+# --- IDE / OS rác ---
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

@@ -1,0 +1,229 @@
+[0m11:36:48.847439 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000178376D0200>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000017837584350>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000017837586690>]}
+
+
+============================== 11:36:48.861439 | 8840d00a-8d65-4bb9-910d-89075fe6e2c0 ==============================
+[0m11:36:48.861439 [info ] [MainThread]: Running with dbt=1.10.10
+[0m11:36:48.863438 [debug] [MainThread]: running dbt with arguments {'partial_parse': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'send_anonymous_usage_stats': 'True', 'use_colors': 'True', 'cache_selected_only': 'False', 'target_path': 'None', 'warn_error': 'None', 'invocation_command': 'dbt compile', 'log_format': 'default', 'version_check': 'True', 'introspect': 'True', 'debug': 'False', 'printer_width': '80', 'fail_fast': 'False', 'no_print': 'None', 'use_experimental_parser': 'False', 'log_cache_events': 'False', 'quiet': 'False', 'empty': 'False', 'indirect_selection': 'eager', 'log_path': 'logs', 'profiles_dir': 'D:\\PROJECTS\\project-dagster-university\\dagster_university\\dagster_and_dbt\\src\\dagster_and_dbt\\analytics', 'static_parser': 'True', 'write_json': 'True'}
+[0m11:36:48.865439 [error] [MainThread]: Encountered an error:
+Runtime Error
+  No dbt_project.yml found at expected path D:\PROJECTS\project-dagster-university\dagster_university\dagster_and_dbt\dbt_project.yml
+  Verify that each entry within packages.yml (and their transitive dependencies) contains a file named dbt_project.yml
+  
+[0m11:36:48.868441 [debug] [MainThread]: Command `dbt compile` failed at 11:36:48.868441 after 0.36 seconds
+[0m11:36:48.869437 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000178374CD7F0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000017837BB1BE0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000017837BB1DC0>]}
+[0m11:36:48.870438 [debug] [MainThread]: Flushing usage events
+[0m11:36:51.059628 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m11:41:50.097782 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001AFE14B3B30>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001AFE13EA7B0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001AFE15FFDD0>]}
+
+
+============================== 11:41:50.109782 | 89714a46-9945-4b7d-965a-5bfe83a52ff5 ==============================
+[0m11:41:50.109782 [info ] [MainThread]: Running with dbt=1.10.10
+[0m11:41:50.110781 [debug] [MainThread]: running dbt with arguments {'partial_parse': 'True', 'write_json': 'True', 'send_anonymous_usage_stats': 'True', 'warn_error': 'None', 'cache_selected_only': 'False', 'target_path': 'None', 'use_colors': 'True', 'invocation_command': 'dbt compile', 'log_format': 'default', 'version_check': 'True', 'introspect': 'True', 'debug': 'False', 'printer_width': '80', 'fail_fast': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'False', 'use_experimental_parser': 'False', 'log_cache_events': 'False', 'log_path': 'logs', 'indirect_selection': 'eager', 'profiles_dir': 'D:\\PROJECTS\\project-dagster-university\\dagster_university\\dagster_and_dbt\\src\\dagster_and_dbt\\analytics', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'static_parser': 'True'}
+[0m11:41:50.112302 [error] [MainThread]: Encountered an error:
+Runtime Error
+  No dbt_project.yml found at expected path D:\PROJECTS\project-dagster-university\dagster_university\dagster_and_dbt\dbt_project.yml
+  Verify that each entry within packages.yml (and their transitive dependencies) contains a file named dbt_project.yml
+  
+[0m11:41:50.114312 [debug] [MainThread]: Command `dbt compile` failed at 11:41:50.114312 after 0.26 seconds
+[0m11:41:50.115325 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001AFE0950A40>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001AFE09536B0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001AFE10C8500>]}
+[0m11:41:50.116311 [debug] [MainThread]: Flushing usage events
+[0m11:41:52.173309 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m11:43:26.696974 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000029F5680E270>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000029F598EDBE0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000029F598EEE10>]}
+
+
+============================== 11:43:26.711975 | 90673838-10d4-44a0-aa30-b66d0118215d ==============================
+[0m11:43:26.711975 [info ] [MainThread]: Running with dbt=1.10.10
+[0m11:43:26.713975 [debug] [MainThread]: running dbt with arguments {'partial_parse': 'True', 'static_parser': 'True', 'send_anonymous_usage_stats': 'True', 'use_colors': 'True', 'cache_selected_only': 'False', 'target_path': 'None', 'warn_error': 'None', 'invocation_command': 'dbt ', 'log_format': 'default', 'version_check': 'True', 'introspect': 'True', 'debug': 'False', 'printer_width': '80', 'fail_fast': 'False', 'no_print': 'None', 'empty': 'None', 'quiet': 'False', 'use_experimental_parser': 'False', 'log_cache_events': 'False', 'log_path': 'd:\\PROJECTS\\project-dagster-university\\dagster_university\\dagster_and_dbt\\logs', 'indirect_selection': 'eager', 'write_json': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'profiles_dir': 'D:\\PROJECTS\\project-dagster-university\\dagster_university\\dagster_and_dbt\\src\\dagster_and_dbt\\analytics'}
+[0m11:43:26.708975 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001A083C0EDB0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001A08632DEB0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001A086352BD0>]}
+
+
+============================== 11:43:26.721976 | 140317c6-1eb6-49a8-9907-5e7ec2193bd9 ==============================
+[0m11:43:26.721976 [info ] [MainThread]: Running with dbt=1.10.10
+[0m11:43:26.723985 [debug] [MainThread]: running dbt with arguments {'partial_parse': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'send_anonymous_usage_stats': 'True', 'warn_error': 'None', 'cache_selected_only': 'False', 'target_path': 'None', 'version_check': 'True', 'invocation_command': 'dbt ', 'log_format': 'default', 'use_colors': 'True', 'introspect': 'True', 'debug': 'False', 'log_cache_events': 'False', 'fail_fast': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'None', 'printer_width': '80', 'use_experimental_parser': 'False', 'indirect_selection': 'eager', 'log_path': 'd:\\PROJECTS\\project-dagster-university\\dagster_university\\dagster_and_dbt\\logs', 'write_json': 'True', 'static_parser': 'True', 'profiles_dir': 'D:\\PROJECTS\\project-dagster-university\\dagster_university\\dagster_and_dbt\\src\\dagster_and_dbt\\analytics'}
+[0m11:43:26.729976 [warn ] [MainThread]: [[33mWARNING[0m]: Deprecated functionality
+The `source-paths` config has been renamed to `model-paths`. Please update your
+`dbt_project.yml` configuration to reflect this change.
+[0m11:43:26.730975 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'deprecation', 'label': '90673838-10d4-44a0-aa30-b66d0118215d', 'property_': 'warn', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000029F5A5BFE30>]}
+[0m11:43:26.737978 [warn ] [MainThread]: [[33mWARNING[0m]: Deprecated functionality
+The `source-paths` config has been renamed to `model-paths`. Please update your
+`dbt_project.yml` configuration to reflect this change.
+[0m11:43:26.738975 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'deprecation', 'label': '140317c6-1eb6-49a8-9907-5e7ec2193bd9', 'property_': 'warn', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001A086F7ACC0>]}
+[0m11:43:27.414356 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '90673838-10d4-44a0-aa30-b66d0118215d', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000029F5A6C98B0>]}
+[0m11:43:27.414356 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '140317c6-1eb6-49a8-9907-5e7ec2193bd9', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001A086B94620>]}
+[0m11:43:27.481257 [info ] [MainThread]: Warning: No packages were found in packages.yml
+[0m11:43:27.480262 [info ] [MainThread]: Warning: No packages were found in packages.yml
+[0m11:43:27.483267 [info ] [MainThread]: Warning: No packages were found in packages.yml
+[0m11:43:27.483267 [info ] [MainThread]: Warning: No packages were found in packages.yml
+[0m11:43:27.485261 [warn ] [MainThread]: [[33mWARNING[0m][DeprecationsSummary]: Deprecated functionality
+Summary of encountered deprecations:
+- ConfigSourcePathDeprecation: 1 occurrence
+To see all deprecation instances instead of just the first occurrence of each,
+run command again with the `--show-all-deprecations` flag. You may also need to
+run with `--no-partial-parse` as some deprecations are only encountered during
+parsing.
+[0m11:43:27.485261 [warn ] [MainThread]: [[33mWARNING[0m][DeprecationsSummary]: Deprecated functionality
+Summary of encountered deprecations:
+- ConfigSourcePathDeprecation: 1 occurrence
+To see all deprecation instances instead of just the first occurrence of each,
+run command again with the `--show-all-deprecations` flag. You may also need to
+run with `--no-partial-parse` as some deprecations are only encountered during
+parsing.
+[0m11:43:27.489274 [debug] [MainThread]: Command `cli deps` succeeded at 11:43:27.488261 after 1.16 seconds
+[0m11:43:27.489274 [debug] [MainThread]: Command `cli deps` succeeded at 11:43:27.489274 after 1.17 seconds
+[0m11:43:27.489274 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001A08680BC80>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001A085812AE0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001A086352BD0>]}
+[0m11:43:27.490261 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000029F59C6EE70>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000029F5725D400>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000029F59F92630>]}
+[0m11:43:27.490261 [debug] [MainThread]: Flushing usage events
+[0m11:43:27.491262 [debug] [MainThread]: Flushing usage events
+[0m11:43:29.758079 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m11:43:29.801740 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m11:43:43.178717 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002578D28B860>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002578A594B60>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002578D3E8680>]}
+
+
+============================== 11:43:43.190713 | d4a3b7da-b7ba-420a-a946-9aeed62fc1cd ==============================
+[0m11:43:43.190713 [info ] [MainThread]: Running with dbt=1.10.10
+[0m11:43:43.192719 [debug] [MainThread]: running dbt with arguments {'partial_parse': 'True', 'static_parser': 'True', 'send_anonymous_usage_stats': 'True', 'version_check': 'True', 'cache_selected_only': 'False', 'target_path': 'None', 'use_colors': 'True', 'invocation_command': 'dbt compile', 'log_format': 'default', 'warn_error': 'None', 'introspect': 'True', 'debug': 'False', 'log_cache_events': 'False', 'fail_fast': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'False', 'use_experimental_parser': 'False', 'printer_width': '80', 'log_path': 'D:\\PROJECTS\\project-dagster-university\\dagster_university\\dagster_and_dbt\\logs', 'indirect_selection': 'eager', 'profiles_dir': 'D:\\PROJECTS\\project-dagster-university\\dagster_university\\dagster_and_dbt\\src\\dagster_and_dbt\\analytics', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'write_json': 'True'}
+[0m11:43:43.199714 [error] [MainThread]: Encountered an error:
+Runtime Error
+  Could not find profile named 'default'
+[0m11:43:43.209717 [debug] [MainThread]: Command `dbt compile` failed at 11:43:43.209717 after 0.35 seconds
+[0m11:43:43.210714 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002578D5B6390>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002578D765520>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002578D96F650>]}
+[0m11:43:43.211712 [debug] [MainThread]: Flushing usage events
+[0m11:43:45.351774 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m12:00:45.707799 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002A3B4EB3680>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002A3B5833BF0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002A3B5830F20>]}
+
+
+============================== 12:00:45.722798 | c6b55a18-2a4e-46a4-be98-110042a64777 ==============================
+[0m12:00:45.722798 [info ] [MainThread]: Running with dbt=1.10.10
+[0m12:00:45.724800 [debug] [MainThread]: running dbt with arguments {'partial_parse': 'True', 'write_json': 'True', 'send_anonymous_usage_stats': 'True', 'version_check': 'True', 'cache_selected_only': 'False', 'target_path': 'None', 'use_colors': 'True', 'invocation_command': 'dbt compile', 'log_format': 'default', 'warn_error': 'None', 'introspect': 'True', 'debug': 'False', 'log_cache_events': 'False', 'fail_fast': 'False', 'no_print': 'None', 'use_experimental_parser': 'False', 'empty': 'False', 'quiet': 'False', 'printer_width': '80', 'indirect_selection': 'eager', 'log_path': 'logs', 'profiles_dir': 'D:\\PROJECTS\\project-dagster-university\\dagster_university\\dagster_and_dbt\\src\\dagster_and_dbt\\analytics', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'static_parser': 'True'}
+[0m12:00:45.726799 [error] [MainThread]: Encountered an error:
+Runtime Error
+  No dbt_project.yml found at expected path D:\PROJECTS\project-dagster-university\dagster_university\dagster_and_dbt\dbt_project.yml
+  Verify that each entry within packages.yml (and their transitive dependencies) contains a file named dbt_project.yml
+  
+[0m12:00:45.728798 [debug] [MainThread]: Command `dbt compile` failed at 12:00:45.728798 after 0.58 seconds
+[0m12:00:45.729798 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002A3B27D4AA0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002A3B56534A0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002A3B59AE330>]}
+[0m12:00:45.732799 [debug] [MainThread]: Flushing usage events
+[0m12:00:49.165233 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m12:07:10.524492 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000276E5BA91C0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000276E6226AB0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000276E3955220>]}
+
+
+============================== 12:07:10.537494 | a1098e04-0b46-47be-91fa-2ed1580cc5bc ==============================
+[0m12:07:10.537494 [info ] [MainThread]: Running with dbt=1.10.10
+[0m12:07:10.539491 [debug] [MainThread]: running dbt with arguments {'partial_parse': 'True', 'static_parser': 'True', 'send_anonymous_usage_stats': 'True', 'warn_error': 'None', 'cache_selected_only': 'False', 'target_path': 'None', 'use_colors': 'True', 'invocation_command': 'dbt ', 'log_format': 'default', 'version_check': 'True', 'introspect': 'True', 'debug': 'False', 'log_cache_events': 'False', 'fail_fast': 'False', 'no_print': 'None', 'empty': 'None', 'use_experimental_parser': 'False', 'quiet': 'False', 'printer_width': '80', 'indirect_selection': 'eager', 'log_path': 'logs', 'write_json': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'profiles_dir': 'D:\\PROJECTS\\project-dagster-university\\dagster_university\\dagster_and_dbt\\src\\dagster_and_dbt\\analytics'}
+[0m12:07:10.554546 [warn ] [MainThread]: [[33mWARNING[0m]: Deprecated functionality
+The `source-paths` config has been renamed to `model-paths`. Please update your
+`dbt_project.yml` configuration to reflect this change.
+[0m12:07:10.556495 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'deprecation', 'label': 'a1098e04-0b46-47be-91fa-2ed1580cc5bc', 'property_': 'warn', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000276E6B5ABD0>]}
+[0m12:07:11.586493 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'a1098e04-0b46-47be-91fa-2ed1580cc5bc', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000276E6DD0050>]}
+[0m12:07:11.737491 [info ] [MainThread]: Warning: No packages were found in packages.yml
+[0m12:07:11.741499 [info ] [MainThread]: Warning: No packages were found in packages.yml
+[0m12:07:11.742492 [warn ] [MainThread]: [[33mWARNING[0m][DeprecationsSummary]: Deprecated functionality
+Summary of encountered deprecations:
+- ConfigSourcePathDeprecation: 1 occurrence
+To see all deprecation instances instead of just the first occurrence of each,
+run command again with the `--show-all-deprecations` flag. You may also need to
+run with `--no-partial-parse` as some deprecations are only encountered during
+parsing.
+[0m12:07:11.746498 [debug] [MainThread]: Command `cli deps` succeeded at 12:07:11.745493 after 5.13 seconds
+[0m12:07:11.747491 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000276E6B58EC0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000276E6680C50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000276E6682BD0>]}
+[0m12:07:11.748491 [debug] [MainThread]: Flushing usage events
+[0m12:07:14.339084 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m12:07:34.638041 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000126DAB6C080>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000126DADDB1A0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000126DADDB2C0>]}
+
+
+============================== 12:07:34.650058 | c39b5d36-c7d1-4cd1-a7b4-7c9febb18840 ==============================
+[0m12:07:34.650058 [info ] [MainThread]: Running with dbt=1.10.10
+[0m12:07:34.652043 [debug] [MainThread]: running dbt with arguments {'partial_parse': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'send_anonymous_usage_stats': 'True', 'use_colors': 'True', 'cache_selected_only': 'False', 'target_path': 'None', 'version_check': 'True', 'invocation_command': 'dbt ', 'log_format': 'default', 'warn_error': 'None', 'introspect': 'True', 'debug': 'False', 'printer_width': '80', 'fail_fast': 'False', 'no_print': 'None', 'empty': 'None', 'quiet': 'False', 'log_cache_events': 'False', 'use_experimental_parser': 'False', 'indirect_selection': 'eager', 'log_path': 'd:\\PROJECTS\\project-dagster-university\\dagster_university\\dagster_and_dbt\\logs', 'write_json': 'True', 'static_parser': 'True', 'profiles_dir': 'D:\\PROJECTS\\project-dagster-university\\dagster_university\\dagster_and_dbt\\src\\dagster_and_dbt\\analytics'}
+[0m12:07:34.665043 [warn ] [MainThread]: [[33mWARNING[0m]: Deprecated functionality
+The `source-paths` config has been renamed to `model-paths`. Please update your
+`dbt_project.yml` configuration to reflect this change.
+[0m12:07:34.666042 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'deprecation', 'label': 'c39b5d36-c7d1-4cd1-a7b4-7c9febb18840', 'property_': 'warn', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000126DB57A390>]}
+[0m12:07:35.158051 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'c39b5d36-c7d1-4cd1-a7b4-7c9febb18840', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000126DA87EA20>]}
+[0m12:07:35.213044 [info ] [MainThread]: Warning: No packages were found in packages.yml
+[0m12:07:35.216043 [info ] [MainThread]: Warning: No packages were found in packages.yml
+[0m12:07:35.218045 [warn ] [MainThread]: [[33mWARNING[0m][DeprecationsSummary]: Deprecated functionality
+Summary of encountered deprecations:
+- ConfigSourcePathDeprecation: 1 occurrence
+To see all deprecation instances instead of just the first occurrence of each,
+run command again with the `--show-all-deprecations` flag. You may also need to
+run with `--no-partial-parse` as some deprecations are only encountered during
+parsing.
+[0m12:07:35.222045 [debug] [MainThread]: Command `cli deps` succeeded at 12:07:35.221042 after 0.91 seconds
+[0m12:07:35.223046 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000126DB4EB8F0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000126DB715B50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000126DB22ADB0>]}
+[0m12:07:35.224046 [debug] [MainThread]: Flushing usage events
+[0m12:07:36.876287 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m12:09:20.244602 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000023257E12A50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000023258D83890>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000023258F73ED0>]}
+
+
+============================== 12:09:20.282955 | 7da6f80f-c728-4639-a226-ef505ea32e2a ==============================
+[0m12:09:20.282955 [info ] [MainThread]: Running with dbt=1.9.0
+[0m12:09:20.288959 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'version_check': 'True', 'profiles_dir': 'D:\\PROJECTS\\project-dagster-university\\dagster_university\\dagster_and_dbt\\src\\dagster_and_dbt\\analytics', 'log_path': 'logs', 'fail_fast': 'False', 'debug': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'False', 'quiet': 'False', 'no_print': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'invocation_command': 'dbt compile', 'introspect': 'True', 'log_format': 'default', 'target_path': 'None', 'static_parser': 'True', 'send_anonymous_usage_stats': 'True'}
+[0m12:09:20.312519 [error] [MainThread]: Encountered an error:
+Runtime Error
+  No dbt_project.yml found at expected path D:\PROJECTS\project-dagster-university\dagster_university\dagster_and_dbt\dbt_project.yml
+  Verify that each entry within packages.yml (and their transitive dependencies) contains a file named dbt_project.yml
+  
+[0m12:09:20.316314 [debug] [MainThread]: Command `dbt compile` failed at 12:09:20.315887 after 0.48 seconds
+[0m12:09:20.317529 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000023258E7B360>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000023258DF3D10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000023258E36470>]}
+[0m12:09:20.319914 [debug] [MainThread]: Flushing usage events
+[0m12:09:22.344277 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m12:11:21.609605 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002690B052A50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002690BFC3890>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002690C1B3ED0>]}
+
+
+============================== 12:11:21.619764 | a5bfdc41-e6c4-4779-917a-d22843f9f72c ==============================
+[0m12:11:21.619764 [info ] [MainThread]: Running with dbt=1.9.0
+[0m12:11:21.621791 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'debug': 'False', 'version_check': 'True', 'log_path': 'logs', 'fail_fast': 'False', 'profiles_dir': 'D:\\PROJECTS\\project-dagster-university\\dagster_university\\dagster_and_dbt\\src\\dagster_and_dbt\\analytics', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'False', 'quiet': 'False', 'no_print': 'None', 'log_format': 'default', 'invocation_command': 'dbt compile', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'introspect': 'True', 'target_path': 'None', 'static_parser': 'True', 'send_anonymous_usage_stats': 'True'}
+[0m12:11:21.622723 [error] [MainThread]: Encountered an error:
+Runtime Error
+  No dbt_project.yml found at expected path D:\PROJECTS\project-dagster-university\dagster_university\dagster_and_dbt\dbt_project.yml
+  Verify that each entry within packages.yml (and their transitive dependencies) contains a file named dbt_project.yml
+  
+[0m12:11:21.625355 [debug] [MainThread]: Command `dbt compile` failed at 12:11:21.625058 after 0.26 seconds
+[0m12:11:21.626053 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002690C0BB360>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002690C033D10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002690C076470>]}
+[0m12:11:21.626774 [debug] [MainThread]: Flushing usage events
+[0m12:11:23.681086 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m12:11:39.119379 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001FC3C98B7D0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001FC3CC779B0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001FC3CD509B0>]}
+
+
+============================== 12:11:39.133372 | c8837369-d3f0-4589-974c-a22eae6aaa7a ==============================
+[0m12:11:39.133372 [info ] [MainThread]: Running with dbt=1.10.10
+[0m12:11:39.135375 [debug] [MainThread]: running dbt with arguments {'partial_parse': 'True', 'write_json': 'True', 'send_anonymous_usage_stats': 'True', 'version_check': 'True', 'cache_selected_only': 'False', 'target_path': 'None', 'use_colors': 'True', 'invocation_command': 'dbt compile', 'log_format': 'default', 'warn_error': 'None', 'introspect': 'True', 'debug': 'False', 'printer_width': '80', 'fail_fast': 'False', 'no_print': 'None', 'quiet': 'False', 'use_experimental_parser': 'False', 'empty': 'False', 'log_cache_events': 'False', 'log_path': 'logs', 'indirect_selection': 'eager', 'profiles_dir': 'D:\\PROJECTS\\project-dagster-university\\dagster_university\\dagster_and_dbt\\src\\dagster_and_dbt\\analytics', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'static_parser': 'True'}
+[0m12:11:39.137373 [error] [MainThread]: Encountered an error:
+Runtime Error
+  No dbt_project.yml found at expected path D:\PROJECTS\project-dagster-university\dagster_university\dagster_and_dbt\dbt_project.yml
+  Verify that each entry within packages.yml (and their transitive dependencies) contains a file named dbt_project.yml
+  
+[0m12:11:39.139376 [debug] [MainThread]: Command `dbt compile` failed at 12:11:39.139376 after 0.28 seconds
+[0m12:11:39.140374 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001FC39C94CB0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001FC3CAE9AC0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001FC3CAE85C0>]}
+[0m12:11:39.141373 [debug] [MainThread]: Flushing usage events
+[0m12:11:40.669820 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m12:13:14.279645 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000234550D8B00>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000234533FA990>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000023452EBD700>]}
+
+
+============================== 12:13:14.288638 | 172a7302-7196-4498-a532-ab0567ce569d ==============================
+[0m12:13:14.288638 [info ] [MainThread]: Running with dbt=1.10.10
+[0m12:13:14.290638 [debug] [MainThread]: running dbt with arguments {'partial_parse': 'True', 'write_json': 'True', 'send_anonymous_usage_stats': 'True', 'use_colors': 'True', 'cache_selected_only': 'False', 'target_path': 'None', 'warn_error': 'None', 'invocation_command': 'dbt compile', 'log_format': 'default', 'version_check': 'True', 'introspect': 'True', 'debug': 'False', 'log_cache_events': 'False', 'fail_fast': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'False', 'use_experimental_parser': 'False', 'printer_width': '80', 'indirect_selection': 'eager', 'log_path': 'logs', 'profiles_dir': 'D:\\PROJECTS\\project-dagster-university\\dagster_university\\dagster_and_dbt\\src\\dagster_and_dbt\\analytics', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'static_parser': 'True'}
+[0m12:13:14.290638 [error] [MainThread]: Encountered an error:
+Runtime Error
+  No dbt_project.yml found at expected path D:\PROJECTS\project-dagster-university\dagster_university\dagster_and_dbt\dbt_project.yml
+  Verify that each entry within packages.yml (and their transitive dependencies) contains a file named dbt_project.yml
+  
+[0m12:13:14.292635 [debug] [MainThread]: Command `dbt compile` failed at 12:13:14.292635 after 0.21 seconds
+[0m12:13:14.293636 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000023455ABFB30>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000023455462DB0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000023455FA0E30>]}
+[0m12:13:14.294638 [debug] [MainThread]: Flushing usage events
+[0m12:13:15.974936 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m18:34:23.093426 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000022AC9D8A960>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000022AC96618E0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000022AC9661DC0>]}
+
+
+============================== 18:34:23.100438 | bc7d1721-b286-432f-8c99-5ba9cda7b3fd ==============================
+[0m18:34:23.100438 [info ] [MainThread]: Running with dbt=1.10.10
+[0m18:34:23.102431 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'version_check': 'True', 'debug': 'False', 'log_path': 'logs', 'fail_fast': 'False', 'profiles_dir': 'D:\\PROJECTS\\project-dagster-university\\dagster_university\\dagster_and_dbt\\src\\dagster_and_dbt\\analytics', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'False', 'quiet': 'False', 'no_print': 'None', 'log_format': 'default', 'invocation_command': 'dbt build --vars {min_date: 2023-03-04, max_date: 2023-03-05} --select config.materialized:incremental', 'static_parser': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'target_path': 'None', 'introspect': 'True', 'send_anonymous_usage_stats': 'True'}
+[0m18:34:23.103464 [error] [MainThread]: Encountered an error:
+Runtime Error
+  No dbt_project.yml found at expected path D:\PROJECTS\project-dagster-university\dagster_university\dagster_and_dbt\dbt_project.yml
+  Verify that each entry within packages.yml (and their transitive dependencies) contains a file named dbt_project.yml
+  
+[0m18:34:23.105429 [debug] [MainThread]: Command `dbt build` failed at 18:34:23.105429 after 0.22 seconds
+[0m18:34:23.106464 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000022AC9D88410>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000022AC9BE0B30>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000022ACA17CFE0>]}
+[0m18:34:23.107463 [debug] [MainThread]: Flushing usage events
+[0m18:34:25.985310 [debug] [MainThread]: An error was encountered while trying to flush usage events

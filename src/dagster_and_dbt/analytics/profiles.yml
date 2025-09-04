@@ -1,0 +1,7 @@
+dagster_dbt_university:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: "src/dagster_and_dbt/analytics/duckdb/local.duckdb"
+      thread: 1
