@@ -8,9 +8,9 @@ The codebase is based on the course’s starter project; my work here focused on
 - Load dbt models into Dagster using @dbt_assets.
 - Explore the Asset Graph, lineage, and metadata in the Dagster UI.
 - Materialize:
- + Staging models: stg_trips, stg_zones
- + Mart model: location_metrics
- + A downstream Python asset: airport_trips (chart)
+-- Staging models: stg_trips, stg_zones
+-- Mart model: location_metrics
+-- A downstream Python asset: airport_trips (chart)
 - Practice an incremental dbt model (daily_metrics) and run it as daily partitions via Dagster (--vars passthrough).
 - Get familiar with jobs/selections and resolve common configuration issues (manifest, env vars, file locks).
 - Note: I am not the original author of the starter code; this repo is for learning purposes.
