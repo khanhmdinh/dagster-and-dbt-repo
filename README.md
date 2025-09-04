@@ -13,23 +13,22 @@ A scheduled Job (trip_update_job) and examples of scoping selections using dbt-s
 
 # Tech stack
 
-Dagster + dagster-dbt + dagster-duckdb
-
-dbt-duckdb (DuckDB 1.x)
-
-Python 3.11+
+- Dagster + dagster-dbt + dagster-duckdb
+- dbt-duckdb (DuckDB 1.x)
+- Python 3.11+
 
 # Project layout (key bits)
+
 src/
   dagster_and_dbt/
-    __init__.py                # exposes Definitions for dagster dev -m dagster_and_dbt
+    __init__.py                # expose Definitions cho: dagster dev -m dagster_and_dbt
     defs/
       __init__.py              # Definitions: assets, resources, jobs, schedules
       assets/
-        dbt.py                 # @dbt_assets + translator + incremental partitioned assets
-        metrics.py             # airport_trips (Python → Matplotlib chart)
+        dbt.py                 # @dbt_assets + translator + incremental (partitioned)
+        metrics.py             # airport_trips (Matplotlib chart + embed preview)
         constants.py
-      jobs.py                  # trip_update_job + selection examples
+      jobs.py                  # trip_update_job + ví dụ selection
       partitions.py            # daily_partition, monthly_partition
       project.py               # dbt_project + prepare_if_dev()
     analytics/                 # dbt project (DuckDB)
@@ -45,10 +44,12 @@ src/
       duckdb/
         local.duckdb           # (gitignored)
 data/
-  raw/                         # parquet seeds (git LFS friendly/optional)
+  raw/                         # parquet seeds (có thể dùng Git LFS)
+  outputs/                     # charts/images (gitignored)
 
 # dbt ↔ Dagster integration highlights
-## Custom translator (link sources to assets)
+
+## Custom translator: dbt sources ↔ assets Python
 
 In defs/assets/dbt.py I override DagsterDbtTranslator.get_asset_key so dbt sources like raw_taxis/trips collapse into existing assets taxi_trips / taxi_zones:
 
@@ -80,7 +81,6 @@ models/marts/daily_metrics.sql:
 {% if is_incremental() %}
   where date_of_business between '{{ var("min_date") }}' and '{{ var("max_date") }}'
 {% endif %}
-
 
 Materialize the daily_metrics asset → Dagster will ask you to pick partitions (days) and inject the window.
 
@@ -127,14 +127,8 @@ Large/derived files are ignored:
 
 If you need to push big inputs (e.g., Parquet > 50MB), consider Git LFS.
 
-📝 Why I built this
+# Why I built this
 
-I love the clarity dbt brings to transformations—and I wanted observability, orchestration, and asset lineage that feel just as elegant. Dagster’s dbt integration let me keep dbt’s mental model while adding:
-
-Partitioned runs without rewriting models
-
-Downstream Python assets for charts/dashboards
-
-Selections my analytics teammates already understand
+I love the clarity dbt brings to transformations—and I wanted observability, orchestration, and asset lineage that feel just as elegant.
 
 If you’re on the same journey, feel free to fork and riff. Happy orchestration! 🚀
