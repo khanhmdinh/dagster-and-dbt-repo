@@ -1,5 +1,5 @@
 # Dagster × dbt – NYC Taxis
-✨ What’s inside
+# What’s inside
 
 dbt project (DuckDB adapter) with staging + marts
 
@@ -11,7 +11,7 @@ Incremental model daily_metrics + daily partitions in Dagster (passes min_date/m
 
 A scheduled Job (trip_update_job) and examples of scoping selections using dbt-style selectors
 
-🧱 Tech stack
+# Tech stack
 
 Dagster + dagster-dbt + dagster-duckdb
 
@@ -21,7 +21,7 @@ Python 3.11+
 
 Windows-centric instructions (PowerShell/CMD), but works on macOS/Linux too
 
-🗂️ Project layout (key bits)
+# Project layout (key bits)
 src/
   dagster_and_dbt/
     __init__.py                # exposes Definitions for dagster dev -m dagster_and_dbt
@@ -49,7 +49,7 @@ src/
 data/
   raw/                         # parquet seeds (git LFS friendly/optional)
 
-🚀 Quickstart
+# Quickstart
 1) Create & activate venv
 
 PowerShell
@@ -94,7 +94,7 @@ Open http://localhost:3000
 
 If the code location fails to load at first boot, click Deployment → Code locations → Reload.
 
-🧩 dbt ↔ Dagster integration highlights
+# dbt ↔ Dagster integration highlights
 Custom translator (link sources to assets)
 
 In defs/assets/dbt.py I override DagsterDbtTranslator.get_asset_key so dbt sources like raw_taxis/trips collapse into existing assets taxi_trips / taxi_zones:
@@ -131,7 +131,7 @@ models/marts/daily_metrics.sql:
 
 Materialize the daily_metrics asset → Dagster will ask you to pick partitions (days) and inject the window.
 
-📊 Python asset that depends on dbt
+# Python asset that depends on dbt
 
 airport_trips (in metrics.py) depends on location_metrics and renders a stacked bar chart in run metadata:
 
@@ -143,7 +143,7 @@ Saves to data/outputs/airport_trips.png (gitignored)
 
 Embeds a base64 preview in the materialization
 
-⏱️ Jobs & automation
+# Jobs & Automation
 
 trip_update_job demonstrates:
 
@@ -162,7 +162,7 @@ trip_update_job = dg.define_asset_job(
 
 Easily plug into Dagster+ GitHub deployment; I keep this repo ready for CI/CD.
 
-🧰 Developer experience
+# Developer experience
 
 dbt_project.prepare_if_dev() auto-parses/updates manifest.json on reload—no more manual dbt parse.
 
@@ -175,7 +175,7 @@ dbt build --vars '{"min_date":"2023-03-04","max_date":"2023-03-05"}' --select 'c
 
 Resolve “file in use” by closing any process holding .duckdb or using a separate DB file for experiments.
 
-🐞 Troubleshooting I hit (and fixed)
+# Troubleshooting I hit (and fixed)
 
 DagsterDbtManifestNotFoundError → ensure prepare_if_dev() is on, or run dbt compile once.
 
@@ -185,23 +185,13 @@ DuckDB “cannot open file… being used by another process” → close noteboo
 
 PowerShell --vars token errors → wrap JSON in single quotes as shown.
 
-🧼 Repo hygiene
+# Repo hygiene
 
 Large/derived files are ignored:
 
 .venv/, .dagster_home/, analytics/target/, analytics/logs/, data/outputs/, *.duckdb, .env
 
 If you need to push big inputs (e.g., Parquet > 50MB), consider Git LFS.
-
-📸 Screenshots (optional)
-
-Asset Graph with linked taxi_trips → stg_trips
-
-Materialization run showing dbt build and chart preview
-
-Partition picker for daily_metrics
-
-Add them under docs/ and reference here.
 
 📝 Why I built this
 
