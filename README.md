@@ -19,8 +19,6 @@ dbt-duckdb (DuckDB 1.x)
 
 Python 3.11+
 
-Windows-centric instructions (PowerShell/CMD), but works on macOS/Linux too
-
 # Project layout (key bits)
 src/
   dagster_and_dbt/
@@ -49,53 +47,8 @@ src/
 data/
   raw/                         # parquet seeds (git LFS friendly/optional)
 
-# Quickstart
-1) Create & activate venv
-
-PowerShell
-
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1
-python -m pip install -U pip
-pip install dagster dagster-webserver dagster-dbt dagster-duckdb duckdb dbt-duckdb pandas matplotlib
-
-
-CMD
-
-python -m venv .venv
-.\.venv\Scripts\activate.bat
-pip install -U pip
-pip install dagster dagster-webserver dagster-dbt dagster-duckdb duckdb dbt-duckdb pandas matplotlib
-
-2) DuckDB config (two options)
-
-A. Fixed path (simple, default in repo)
-profiles.yml points to:
-
-src/dagster_and_dbt/analytics/duckdb/local.duckdb
-
-
-Dagster’s DuckDBResource uses the same file and creates the folder if missing. No env vars needed.
-
-B. Env var (optional)
-If you prefer env-driven path, set DUCKDB_PATH and point profiles.yml to {{ env_var('DUCKDB_PATH') }}.
-
-PowerShell:
-
-$env:DUCKDB_PATH = "$PWD\src\dagster_and_dbt\analytics\duckdb\local.duckdb"
-
-3) Run Dagster
-$env:PYTHONPATH = ".\src"
-dagster dev -m dagster_and_dbt
-
-
-Open http://localhost:3000
-.
-
-If the code location fails to load at first boot, click Deployment → Code locations → Reload.
-
 # dbt ↔ Dagster integration highlights
-Custom translator (link sources to assets)
+## Custom translator (link sources to assets)
 
 In defs/assets/dbt.py I override DagsterDbtTranslator.get_asset_key so dbt sources like raw_taxis/trips collapse into existing assets taxi_trips / taxi_zones:
 
@@ -105,7 +58,7 @@ class CustomizedDagsterDbtTranslator(DagsterDbtTranslator):
             return dg.AssetKey(f"taxi_{props['name']}")
         return super().get_asset_key(props)
 
-Two @dbt_assets functions
+## Two @dbt_assets functions
 
 dbt_analytics: runs all non-incremental models (exclude="config.materialized:incremental").
 
@@ -116,7 +69,7 @@ vars = {"min_date": time_window.start.strftime("%Y-%m-%d"),
         "max_date": time_window.end.strftime("%Y-%m-%d")}
 yield from dbt.cli(["build", "--vars", json.dumps(vars)], context=context).stream()
 
-Incremental model + partitions
+## Incremental model + partitions
 
 models/marts/daily_metrics.sql:
 
@@ -142,25 +95,6 @@ Uses Matplotlib
 Saves to data/outputs/airport_trips.png (gitignored)
 
 Embeds a base64 preview in the materialization
-
-# Jobs & Automation
-
-trip_update_job demonstrates:
-
-Selecting “everything” via AssetSelection.all()
-
-Then excluding sets using Dagster & dbt-style selectors:
-
-from dagster_dbt import build_dbt_asset_selection
-dbt_trips = build_dbt_asset_selection([dbt_analytics], "stg_trips").downstream()
-trip_update_job = dg.define_asset_job(
-    name="trip_update_job",
-    partitions_def=monthly_partition,
-    selection=dg.AssetSelection.all() - dbt_trips
-)
-
-
-Easily plug into Dagster+ GitHub deployment; I keep this repo ready for CI/CD.
 
 # Developer experience
 
