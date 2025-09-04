@@ -1,134 +1,158 @@
-# Dagster × dbt – NYC Taxis
-# What’s inside
+# Dagster × dbt — Hands-On Course Project
 
-dbt project (DuckDB adapter) with staging + marts
+ > "This repository is a hands-on practice project following the Dagster & dbt course.
+The codebase is based on the course’s starter project; my work here focused on configuration, running, observing, and troubleshooting the dbt ↔ Dagster integration—primarily on Windows."
 
-Dagster assets auto-generated from dbt, with a custom translator that links dbt sources → upstream assets (taxi_trips, taxi_zones)
+# Objectives
 
-A Python asset airport_trips that charts trips from NYC airports (depends on dbt model location_metrics)
+- Load dbt models into Dagster using @dbt_assets.
+- Explore the Asset Graph, lineage, and metadata in the Dagster UI.
+- Materialize:
+ + Staging models: stg_trips, stg_zones
+ + Mart model: location_metrics
+ + A downstream Python asset: airport_trips (chart)
+- Practice an incremental dbt model (daily_metrics) and run it as daily partitions via Dagster (--vars passthrough).
+- Get familiar with jobs/selections and resolve common configuration issues (manifest, env vars, file locks).
+- Note: I am not the original author of the starter code; this repo is for learning purposes.
 
-Incremental model daily_metrics + daily partitions in Dagster (passes min_date/max_date to dbt via --vars)
+# What’s Included
 
-A scheduled Job (trip_update_job) and examples of scoping selections using dbt-style selectors
+- dbt project (DuckDB adapter) with staging & marts
+- Dagster assets generated from dbt via @dbt_assets
+- Optional translator to align dbt sources with existing Dagster assets
+- Python asset airport_trips that renders a stacked bar chart (Matplotlib) from location_metrics
+- Incremental model daily_metrics wired to daily partitions in Dagster
+- Example job (trip_update_job) and selection patterns (dbt-style selectors)
 
-# Tech stack
+# Tech Stack
 
-- Dagster + dagster-dbt + dagster-duckdb
+- Dagster, dagster-dbt, dagster-duckdb
 - dbt-duckdb (DuckDB 1.x)
 - Python 3.11+
 
-# Project layout
-```text
+# Project Layout
+
+```
 src/
   dagster_and_dbt/
-    __init__.py                # expose Definitions cho: dagster dev -m dagster_and_dbt
+    __init__.py
     defs/
-      __init__.py              # Definitions: assets, resources, jobs, schedules
       assets/
-        dbt.py                 # @dbt_assets + translator + incremental (partitioned)
-        metrics.py             # airport_trips (Matplotlib chart + embed preview)
+        dbt.py                 # @dbt_assets (+ optional translator) + incremental (partitioned)
+        metrics.py             # airport_trips (Matplotlib chart, embeds preview)
         constants.py
-      jobs.py                  # trip_update_job + ví dụ selection
+      jobs.py                  # example job + selection
       partitions.py            # daily_partition, monthly_partition
-      project.py               # dbt_project + prepare_if_dev()
+      project.py               # dbt_project + prepare_if_dev() for dev UX
     analytics/                 # dbt project (DuckDB)
       dbt_project.yml
       profiles.yml
       models/
-        staging/
-          stg_trips.sql
-          stg_zones.sql
-        marts/
-          location_metrics.sql
-          daily_metrics.sql    # incremental facts by day
-      duckdb/
-        local.duckdb           # (gitignored)
+        staging/{stg_trips.sql, stg_zones.sql}
+        marts/{location_metrics.sql, daily_metrics.sql}
+      duckdb/local.duckdb      # (gitignored)
 data/
-  raw/                         # parquet seeds (có thể dùng Git LFS)
+  raw/                         # parquet samples (consider Git LFS)
   outputs/                     # charts/images (gitignored)
 ```
-# dbt ↔ Dagster integration highlights
 
-## Custom translator: dbt sources ↔ assets Python
+# Getting Started (Windows-friendly)
+## 1) Create & activate a virtual environment
 
-In defs/assets/dbt.py I override DagsterDbtTranslator.get_asset_key so dbt sources like raw_taxis/trips collapse into existing assets taxi_trips / taxi_zones:
+```
+python -m venv .venv
+.\.venv\Scripts\activate.bat
+pip install -U pip
+pip install dagster dagster-webserver dagster-dbt dagster-duckdb duckdb dbt-duckdb pandas matplotlib
+```
+## 2) DuckDB configuration
 
-class CustomizedDagsterDbtTranslator(DagsterDbtTranslator):
-    def get_asset_key(self, props):
-        if props["resource_type"] == "source":
-            return dg.AssetKey(f"taxi_{props['name']}")
-        return super().get_asset_key(props)
+The repository uses a fixed path in profiles.yml:
+```
+src/dagster_and_dbt/analytics/duckdb/local.duckdb
+```
 
-## Two @dbt_assets functions
+Dagster’s DuckDBResource points to the same file and creates the folder if missing—no env var required.
+Prefer env vars? Set DUCKDB_PATH and update profiles.yml to use {{ env_var('DUCKDB_PATH') }}.
 
-dbt_analytics: runs all non-incremental models (exclude="config.materialized:incremental").
+## 3) Run Dagster
+```
+$env:PYTHONPATH = ".\src"
+dagster dev -m dagster_and_dbt
+```
 
-incremental_dbt_models: partitioned daily, only incremental models; passes window to dbt via --vars:
+# Key Integration Notes
 
-time_window = context.partition_time_window
-vars = {"min_date": time_window.start.strftime("%Y-%m-%d"),
-        "max_date": time_window.end.strftime("%Y-%m-%d")}
-yield from dbt.cli(["build", "--vars", json.dumps(vars)], context=context).stream()
+## Loading dbt models as assets
 
-## Incremental model + partitions
+- The project uses @dbt_assets(manifest=dbt_project.manifest_path, ...).
+- During development, dbt_project.prepare_if_dev() keeps the manifest up to date automatically on reload—no manual dbt parse loop.
 
-models/marts/daily_metrics.sql:
+## Example: Python asset depending on a dbt model
 
-{{ config(materialized='incremental', unique_key='date_of_business') }}
+```
+@dg.asset(deps=["location_metrics"])
+def airport_trips(database: DuckDBResource) -> dg.MaterializeResult:
+    df = database.get_connection().execute("""
+        select zone, destination_borough, trips
+        from location_metrics
+        where from_airport
+    """).fetch_df()
 
-... aggregate by day ...
+    fig, ax = plt.subplots(figsize=(10, 6))
+    df.groupby(['zone','destination_borough']).sum()['trips'].unstack().plot(
+        kind='bar', stacked=True, ax=ax
+    )
+    plt.savefig(constants.AIRPORT_TRIPS_FILE_PATH, format="png", bbox_inches="tight")
+    # read file → base64 → embed preview in MaterializeResult metadata
+```
+## Incremental model with partitions
 
+models/marts/daily_metrics.sql is incremental and filters by a supplied date window:
+```
 {% if is_incremental() %}
   where date_of_business between '{{ var("min_date") }}' and '{{ var("max_date") }}'
 {% endif %}
+```
 
-Materialize the daily_metrics asset → Dagster will ask you to pick partitions (days) and inject the window.
+The partitioned @dbt_assets definition passes the window to dbt:
+```
+tw = context.partition_time_window
+vars = {"min_date": tw.start.strftime("%Y-%m-%d"),
+        "max_date": tw.end.strftime("%Y-%m-%d")}
+yield from dbt.cli(["build", "--vars", json.dumps(vars)], context=context).stream()
+```
 
-# Python asset that depends on dbt
+# Troubleshooting (what I encountered)
 
-airport_trips (in metrics.py) depends on location_metrics and renders a stacked bar chart in run metadata:
+- Manifest not found → ensure prepare_if_dev() is executed or run dbt compile once.
+- Env var required: DUCKDB_PATH → either set the variable or stick with the fixed path used by this repo.
+- DuckDB “file in use” → close any process holding the .duckdb file (e.g., notebooks, DB viewers) or use a separate DB for experiments.
+- PowerShell Unexpected token : when using --vars → wrap the JSON in single quotes as shown above.
 
-Queries DuckDB via DuckDBResource
+# Recommended .gitignore
+```
+.venv/
+.env
+__pycache__/
+*.pyc
+.dagster_home/
+src/dagster_and_dbt/analytics/target/
+src/dagster_and_dbt/analytics/logs/
+src/dagster_and_dbt/analytics/duckdb/*.duckdb
+data/outputs/
+```
+If you keep large sample files (e.g., Parquet > 50 MB), consider Git LFS.
 
-Uses Matplotlib
+# Attribution
 
-Saves to data/outputs/airport_trips.png (gitignored)
+- Code structure and most logic come from the Dagster & dbt course starter project.
+- This repository is for educational purposes, with additional configuration notes and Windows-friendly instructions authored by me.
 
-Embeds a base64 preview in the materialization
+# Possible Next Steps
 
-# Developer experience
+- Add dbt tests and Dagster asset checks.
+- CI for dbt build + linting on pull requests.
+- Deploy to Dagster+ (GitHub integration & manifest build during deployment).
 
-dbt_project.prepare_if_dev() auto-parses/updates manifest.json on reload—no more manual dbt parse.
-
-Works great on Windows:
-
-PowerShell quoting for dbt vars:
-
-dbt build --vars '{"min_date":"2023-03-04","max_date":"2023-03-05"}' --select 'config.materialized:incremental'
-
-
-Resolve “file in use” by closing any process holding .duckdb or using a separate DB file for experiments.
-
-# Troubleshooting I hit (and fixed)
-
-DagsterDbtManifestNotFoundError → ensure prepare_if_dev() is on, or run dbt compile once.
-
-Env var required 'DUCKDB_PATH' → either set it in the shell before dagster dev, or switch to the fixed path pattern above.
-
-DuckDB “cannot open file… being used by another process” → close notebooks/tools holding the file; Dagster + dbt share the same .duckdb.
-
-PowerShell --vars token errors → wrap JSON in single quotes as shown.
-
-# Repo hygiene
-
-Large/derived files are ignored:
-
-.venv/, .dagster_home/, analytics/target/, analytics/logs/, data/outputs/, *.duckdb, .env
-
-If you need to push big inputs (e.g., Parquet > 50MB), consider Git LFS.
-
-# Why I built this
-
-I love the clarity dbt brings to transformations—and I wanted observability, orchestration, and asset lineage that feel just as elegant.
-
-If you’re on the same journey, feel free to fork and riff. Happy orchestration! 🚀
+If you’re following the same course, I hope this README makes setup and experimentation smoother. Happy orchestrating! 🚀
