@@ -17,8 +17,8 @@ A scheduled Job (trip_update_job) and examples of scoping selections using dbt-s
 - dbt-duckdb (DuckDB 1.x)
 - Python 3.11+
 
-# Project layout (key bits)
-
+# Project layout
+```text
 src/
   dagster_and_dbt/
     __init__.py                # expose Definitions cho: dagster dev -m dagster_and_dbt
@@ -46,7 +46,7 @@ src/
 data/
   raw/                         # parquet seeds (có thể dùng Git LFS)
   outputs/                     # charts/images (gitignored)
-
+```
 # dbt ↔ Dagster integration highlights
 
 ## Custom translator: dbt sources ↔ assets Python
